@@ -1,5 +1,4 @@
 require("dotenv").config();
-console.log(process.env.MONGODB_URI);
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGODB_URI;
@@ -8,7 +7,6 @@ async function fetchPosts() {
   await client.connect();
   const db = client.db();
   const collection = db.collection("posts");
-  console.log(collection);
   const posts = await collection.find({}).toArray();
   return posts;
 }
